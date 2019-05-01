@@ -25,7 +25,7 @@ DEFINE_bool(autoconnect, false, "Connect to the server without user "
                                 "intervention.");
 #define HUJIANHUA      1
 #if HUJIANHUA
-DEFINE_string(server, "10.150.90.104", "The server to connect to.");
+DEFINE_string(server, "127.0.0.1", "The server to connect to.");
 #else
 DEFINE_string(server, "localhost", "The server to connect to.");
 #endif

@@ -115,7 +115,7 @@ class PeerConnectionClient : public sigslot::has_slots<>,
   std::string control_data_;
   std::string notification_data_;
   std::string client_name_;
-  Peers peers_;
+  Peers peers_;// 当前系统中所有已登陆的peer
   State state_;
   int my_id_;
 };

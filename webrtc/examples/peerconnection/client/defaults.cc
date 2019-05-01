@@ -45,7 +45,7 @@ std::string GetPeerConnectionString() {
 
 std::string GetDefaultServerName() {
 #if JANUS_FLAG
-  return GetEnvVarOrDefault("WEBRTC_SERVER", "10.150.90.104");
+  return GetEnvVarOrDefault("WEBRTC_SERVER", "127.0.0.1");
 #else
   return GetEnvVarOrDefault("WEBRTC_SERVER", "localhost");
 #endif

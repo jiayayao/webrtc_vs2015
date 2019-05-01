@@ -37,6 +37,7 @@ void CalculateWindowSizeForText(HWND wnd, const wchar_t* text,
   ::DrawText(dc, text, -1, &text_rc, DT_CALCRECT | DT_SINGLELINE);
   ::ReleaseDC(wnd, dc);
   RECT client, window;
+  SetWindowPos(wnd, NULL, 0, 0, 100, 100, 0);
   ::GetClientRect(wnd, &client);
   ::GetWindowRect(wnd, &window);
 
@@ -501,7 +502,7 @@ void MainWnd::LayoutConnectUI(bool show) {
                                  &windows[i].width, &windows[i].height);
       total_width += windows[i].width;
     }
-
+    SetWindowPos(wnd_, NULL, 0, 0, 500, 500, 0);
     RECT rc;
     ::GetClientRect(wnd_, &rc);
     size_t x = (rc.right / 2) - (total_width / 2);
