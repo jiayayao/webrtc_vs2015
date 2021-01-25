@@ -79,7 +79,7 @@ bool Conductor::InitializePeerConnection() {
   RTC_DCHECK(peer_connection_factory_.get() == NULL);
   RTC_DCHECK(peer_connection_.get() == NULL);
 
-  peer_connection_factory_  = webrtc::CreatePeerConnectionFactory();
+  peer_connection_factory_  = webrtc::CreatePeerConnectionFactory();// 创建PeerConnection工厂类
 
   if (!peer_connection_factory_.get()) {
     main_wnd_->MessageBox("Error",
@@ -88,7 +88,7 @@ bool Conductor::InitializePeerConnection() {
     return false;
   }
 
-  if (!CreatePeerConnection(DTLS_ON)) {
+  if (!CreatePeerConnection(DTLS_ON)) {// 创建PeerConnection类
     main_wnd_->MessageBox("Error",
         "CreatePeerConnection failed", true);
     DeletePeerConnection();
@@ -406,11 +406,11 @@ void Conductor::AddStreams() {
 
 
 #if CAP
-  std::unique_ptr<cricket::VideoCapturer> video = OpenVideoCaptureDevice();
+  //std::unique_ptr<cricket::VideoCapturer> video = OpenVideoCaptureDevice();
   rtc::scoped_refptr<webrtc::MediaStreamInterface> stream =
 	  peer_connection_factory_->CreateLocalMediaStream(kStreamLabel);
 
-  if (video)
+  if (1)
   {
 	  rtc::scoped_refptr<webrtc::VideoTrackInterface> video_track(
 		  peer_connection_factory_->CreateVideoTrack(

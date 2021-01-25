@@ -20,6 +20,7 @@
 #include "webrtc/base/logging.h"
 #include "webrtc/modules/audio_coding/neteq/decoder_database.h"
 #include "webrtc/modules/audio_coding/neteq/tick_timer.h"
+#include "webrtc/system_wrappers/include/trace.h"
 
 namespace webrtc {
 namespace {
@@ -202,7 +203,9 @@ rtc::Optional<Packet> PacketBuffer::GetNextPacket() {
   // Assert that the packet sanity checks in InsertPacket method works.
   RTC_DCHECK(!packet->empty());
   buffer_.pop_front();
-
+  WEBRTC_TRACE(webrtc::kTraceWarning, webrtc::kTraceAudioCoding, 0,
+      "[JDEBUG]audio timestamp is:%d, seqNo:%d, payload_type:%d", 
+        packet->timestamp, packet->sequence_number, packet->payload_type);
   return packet;
 }
 

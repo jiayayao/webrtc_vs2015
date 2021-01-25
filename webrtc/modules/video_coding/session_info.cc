@@ -248,7 +248,8 @@ void VCMSessionInfo::ShiftSubsequentPackets(PacketIterator it,
   }
   memmove(first_packet_ptr + steps_to_shift, first_packet_ptr, shift_length);
 }
-
+// 更新包接收的状态
+// 判断的依据是是否有首包和尾包，并且首保和尾包之间的seq no是否连续
 void VCMSessionInfo::UpdateCompleteSession() {
   if (HaveFirstPacket() && HaveLastPacket()) {
     // Do we have all the packets in this session?

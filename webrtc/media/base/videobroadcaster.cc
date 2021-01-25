@@ -53,6 +53,7 @@ VideoSinkWants VideoBroadcaster::wants() const {
 
 void VideoBroadcaster::OnFrame(const webrtc::VideoFrame& frame) {
   rtc::CritScope cs(&sinks_and_wants_lock_);
+  //LOG(LS_ERROR) << "[JDEBUG][Render]pts:%lld", frame.timestamp_us;
   for (auto& sink_pair : sink_pairs()) {
     if (sink_pair.wants.rotation_applied &&
         frame.rotation() != webrtc::kVideoRotation_0) {

@@ -31,6 +31,7 @@
 #include "webrtc/system_wrappers/include/event_wrapper.h"
 #include "webrtc/system_wrappers/include/field_trial.h"
 #include "webrtc/system_wrappers/include/metrics.h"
+#include "webrtc/system_wrappers/include/trace.h"
 
 namespace webrtc {
 // Interval for updating SS data.
@@ -488,6 +489,9 @@ VCMEncodedFrame* VCMJitterBuffer::NextCompleteFrame(uint32_t max_wait_time_ms) {
   }
   VCMEncodedFrame* encoded_frame = decodable_frames_.Front();
   crit_sect_->Leave();
+  WEBRTC_TRACE(webrtc::kTraceWarning, webrtc::kTraceAudioCoding, 0,
+      "[JDEBUG]video RenderTimeMs is:%lld, payload_type:%d",
+      encoded_frame->RenderTimeMs(), encoded_frame->PayloadType());
   return encoded_frame;
 }
 

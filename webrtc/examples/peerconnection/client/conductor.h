@@ -123,15 +123,15 @@ class Conductor
 
   int peer_id_;
   bool loopback_;
-  rtc::scoped_refptr<webrtc::PeerConnectionInterface> peer_connection_;
+  rtc::scoped_refptr<webrtc::PeerConnectionInterface> peer_connection_; //建立连接的对象
   rtc::scoped_refptr<webrtc::PeerConnectionFactoryInterface>
       peer_connection_factory_;
-  PeerConnectionClient* client_;
+  PeerConnectionClient* client_; //信令连接对象
   MainWindow* main_wnd_;
   std::deque<std::string*> pending_messages_;
   std::map<std::string, rtc::scoped_refptr<webrtc::MediaStreamInterface> >
       active_streams_;
-  std::string server_;
+  std::string server_; //服务器地址
 };
 
 #endif  // WEBRTC_EXAMPLES_PEERCONNECTION_CLIENT_CONDUCTOR_H_
